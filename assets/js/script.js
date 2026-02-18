@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Shared Components Logic
     const navHTML = `
     <nav>
-        <div class="logo"><a href="index.html"><img src="logo.png" alt="NewTech Kraków" style="height: 40px; vertical-align: middle;"></a></div>
+        <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="NewTech Kraków" style="height: 40px; vertical-align: middle;"></a></div>
         <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
