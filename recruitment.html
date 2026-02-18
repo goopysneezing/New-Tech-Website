@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekrutacja - NewTech 9155</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <section class="page-header">
+            <h1>Rekrutacja</h1>
+            <p>
+                Chcesz dołączyć do elitarnej grupy inżynierów i programistów? Zgłoś się do NewTech 9155.
+            </p>
+        </section>
+
+        <h2 class="text-center neon-text" style="margin-bottom: 40px;">Dołącz do nas</h2>
+        <section class="two-col-grid">
+            <!-- LEWA KOLUMNA: INFO REKRUTACYJNE -->
+            <div class="glass-card">
+                <h3>Informacje</h3>
+                <p style="margin-top: 15px; font-size: 0.9rem;">
+                    <strong>Dla kogo:</strong><br>
+                    Poszukujemy absolwentów szkół podstawowych z pasją do nowych technologii. Jeśli robotyka,
+                    programowanie i kreatywne rozwiązywanie problemów to Twój żywioł, ta szkoła jest dla Ciebie.
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">
+                    <strong>Czesne (ok. 1800 zł/mc):</strong><br>
+                    Czesne pokrywa wszystkie zajęcia dydaktyczne, w tym:
+                <ul style="margin-left: 20px; font-size: 0.9rem; margin-top: 5px; color: var(--text-muted);">
+                    <li>Materiały do budowy robotów FRC</li>
+                    <li>Przygotowanie do certyfikatów branżowych (Cisco, Microsoft)</li>
+                    <li>Dodatkowe zajęcia z języka angielskiego technicznego</li>
+                    <li>Wyjazdy na zawody międzynarodowe</li>
+                </ul>
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">
+                    <strong>Proces Rekrutacji:</strong><br>
+                    1. Wypełnij formularz zgłoszeniowy online (obok).<br>
+                    2. Zaprosimy Cię na rozmowę kwalifikacyjną - chcemy poznać Twoje pasje!<br>
+                    3. Do 15 lipca ogłosimy listę przyjętych osób.<br>
+                    4. Złożenie oryginałów dokumentów w sekretariacie.
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--neon-blue);">
+                    <strong>*Stypendia:</strong><br>
+                    Dla laureatów konkursów przedmiotowych oraz osób w trudnej sytuacji materialnej oferujemy wysokie
+                    stypendia naukowe i socjalne.
+                </p>
+            </div>
+
+            <!-- PRAWA KOLUMNA: FORMULARZ REKRUTACYJNY -->
+            <div class="glass-card">
+                <h3 style="color: var(--neon-blue);">Zgłoś się!</h3>
+                <p style="margin-bottom: 20px; font-size: 0.9rem;">Wypełnij wstępny formularz, a skontaktujemy się z
+                    Tobą.</p>
+
+                <form id="recruitmentForm">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Imię i
+                            Nazwisko</label>
+                        <input type="text"
+                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Telefon</label>
+                        <input type="tel"
+                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Obecna Szkoła</label>
+                        <input type="text"
+                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Wybór Kierunku</label>
+                        <select
+                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                            <option>Technik Programista</option>
+                            <option>Technik Robotyk</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; font-size: 0.9rem;">Wyślij
+                        Zgłoszenie</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

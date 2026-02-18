@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - NewTech 9155</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <section class="page-header">
+            <h1>Skontaktuj się</h1>
+            <p>
+                Masz pytania dotyczące rekrutacji? Chcesz zostać partnerem drużyny? Napisz do nas.
+            </p>
+
+        </section>
+
+        <!-- SEKKCJA 1: KONTAKT -->
+        <section class="two-col-grid">
+            <!-- LEWA KOLUMNA: DANE -->
+            <!-- LEWA KOLUMNA: DANE + REKRUTACJA -->
+            <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="glass-card">
+                    <h3>Dane Kontaktowe</h3>
+                    <p style="margin-top: 15px;">
+                        <strong>Adres:</strong><br>
+                        ul. Tyniecka 18<br>
+                        30-323 Kraków<br>
+                        (Dzielnica Dębniki, blisko Wisły)
+                    </p>
+                    <p style="margin-top: 15px;">
+                        <strong>Email:</strong><br>
+                        sekretariat@newtech.edu.pl
+                    </p>
+                </div>
+
+                <div class="glass-card" style="margin-top: 30px; text-align: center;">
+                    <h3 style="color: var(--neon-blue);">Dołącz do nas!</h3>
+                    <p style="margin-bottom: 20px; font-size: 0.9rem;">Chcesz zostać częścią zespołu?</p>
+                    <a href="recruitment.html" class="btn" style="width: 100%;">Przejdź do rekrutacji</a>
+                </div>
+            </div>
+
+            <!-- PRAWA KOLUMNA: FORMULARZ KONTAKTOWY -->
+            <form class="glass-card" id="contactForm">
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 10px; font-size: 0.9rem;">Imię i Nazwisko</label>
+                    <input type="text"
+                        style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 10px; font-size: 0.9rem;">Email</label>
+                    <input type="email"
+                        style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 10px; font-size: 0.9rem;">Wiadomość</label>
+                    <textarea rows="5"
+                        style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none; resize: vertical;"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Wyślij</button>
+            </form>
+        </section>
+
+
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

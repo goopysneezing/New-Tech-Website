@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - NewTech 9155</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
+</head>
+
+<body>
+
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <section class="page-header">
+            <h1>Galeria</h1>
+            <p>
+                Zajrzyj za kulisy NewTech 9155. Oto chwile, które nas definiują — od zawodów robotycznych po codzienną
+                pracę w laboratorium.
+            </p>
+        </section>
+
+        <!-- Filter Buttons -->
+        <section class="gallery-filters text-center">
+            <button class="gallery-filter-btn active" data-filter="all">Wszystko</button>
+            <button class="gallery-filter-btn" data-filter="robotyka">Robotyka</button>
+            <button class="gallery-filter-btn" data-filter="lab">Laboratorium</button>
+            <button class="gallery-filter-btn" data-filter="wydarzenia">Wydarzenia</button>
+        </section>
+
+        <!-- Gallery Grid -->
+        <section class="gallery-grid">
+            <div class="gallery-item" data-category="robotyka">
+                <img src="https://picsum.photos/seed/nt1/600/400" alt="Projekt robotyczny" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Budowa robota FRC</span>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item-tall" data-category="lab">
+                <img src="https://picsum.photos/seed/nt2/600/800" alt="Laboratorium" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Laboratorium programowania</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="wydarzenia">
+                <img src="https://picsum.photos/seed/nt3/600/400" alt="Zawody" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>FRC Stambuł 2025</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="robotyka">
+                <img src="https://picsum.photos/seed/nt4/600/400" alt="Robot" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Prototyp robota Rover</span>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item-wide" data-category="wydarzenia">
+                <img src="https://picsum.photos/seed/nt5/800/400" alt="Drużyna" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Drużyna 9155 na zawodach</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="lab">
+                <img src="https://picsum.photos/seed/nt6/600/400" alt="Warsztaty" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Warsztaty elektroniki</span>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item-tall" data-category="robotyka">
+                <img src="https://picsum.photos/seed/nt7/600/800" alt="Mechanika" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Montaż mechaniczny</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="wydarzenia">
+                <img src="https://picsum.photos/seed/nt8/600/400" alt="Prezentacja" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Prezentacja na targach IT</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="lab">
+                <img src="https://picsum.photos/seed/nt9/600/400" alt="Programowanie" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Sesja kodowania</span>
+                </div>
+            </div>
+
+            <div class="gallery-item gallery-item-wide" data-category="robotyka">
+                <img src="https://picsum.photos/seed/nt10/800/400" alt="Workspace" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Nasz workspace</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="wydarzenia">
+                <img src="https://picsum.photos/seed/nt11/600/400" alt="Nagroda" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Ceremonia wręczenia nagród</span>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="lab">
+                <img src="https://picsum.photos/seed/nt12/600/400" alt="3D Printing" loading="lazy">
+                <div class="gallery-overlay">
+                    <span>Druk 3D komponentów</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#8249;</button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next">&#8250;</button>
+        <img src="" alt="" id="lightbox-img">
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
