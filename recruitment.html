@@ -4,98 +4,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Technology - szkoły średnie</title>
+    <title>New Technology - Zgłoszenie</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
 </head>
 
 <body>
-
     <div id="nav-placeholder"></div>
 
-    <main>
-        <section class="page-header">
-            <h1>Rekrutacja</h1>
-            <p>
-                Chcesz dołączyć do elitarnej grupy inżynierów i programistów? Zgłoś się do NewTech 9155.
-            </p>
-        </section>
+    <div class="blob-mini" style="top: 10%; left: 10%;"></div>
+    <div class="blob-mini" style="bottom: 10%; right: 10%; animation-delay: -4s;"></div>
 
-        <h2 class="text-center neon-text" style="margin-bottom: 40px;">Dołącz do nas</h2>
-        <section class="two-col-grid">
-            <!-- LEWA KOLUMNA: INFO REKRUTACYJNE -->
-            <div class="glass-card">
-                <h3>Informacje</h3>
-                <p style="margin-top: 15px; font-size: 0.9rem;">
-                    <strong>Dla kogo:</strong><br>
-                    Poszukujemy absolwentów szkół podstawowych z pasją do nowych technologii. Jeśli robotyka,
-                    programowanie i kreatywne rozwiązywanie problemów to Twój żywioł, ta szkoła jest dla Ciebie.
-                </p>
-                <p style="margin-top: 15px; font-size: 0.9rem;">
-                    <strong>Czesne (ok. 1800 zł/mc):</strong><br>
-                    Czesne pokrywa wszystkie zajęcia dydaktyczne, w tym:
-                <ul style="margin-left: 20px; font-size: 0.9rem; margin-top: 5px; color: var(--text-muted);">
-                    <li>Materiały do budowy robotów FRC</li>
-                    <li>Przygotowanie do certyfikatów branżowych (Cisco, Microsoft)</li>
-                    <li>Dodatkowe zajęcia z języka angielskiego technicznego</li>
-                    <li>Wyjazdy na zawody międzynarodowe</li>
-                </ul>
-                </p>
-                <p style="margin-top: 15px; font-size: 0.9rem;">
-                    <strong>Proces Rekrutacji:</strong><br>
-                    1. Wypełnij formularz zgłoszeniowy online (obok).<br>
-                    2. Zaprosimy Cię na rozmowę kwalifikacyjną - chcemy poznać Twoje pasje!<br>
-                    3. Do 15 lipca ogłosimy listę przyjętych osób.<br>
-                    4. Złożenie oryginałów dokumentów w sekretariacie.
-                </p>
-                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--neon-blue);">
-                    <strong>*Stypendia:</strong><br>
-                    Dla laureatów konkursów przedmiotowych oraz osób w trudnej sytuacji materialnej oferujemy wysokie
-                    stypendia naukowe i socjalne.
-                </p>
-            </div>
+    <main class="form-page">
+        <div class="glass-card form-container">
 
-            <!-- PRAWA KOLUMNA: FORMULARZ REKRUTACYJNY -->
-            <div class="glass-card">
-                <h3 style="color: var(--neon-blue);">Zgłoś się!</h3>
-                <p style="margin-bottom: 20px; font-size: 0.9rem;">Wypełnij wstępny formularz, a skontaktujemy się z
-                    Tobą.</p>
+            <!-- Header Section -->
+            <header class="form-header">
+                <h1>P O D A N I E</h1>
+                <h2>Technikum Programistyczno-Robotyczne New Technology Kraków na rok szkolny 2025/2026</h2>
 
-                <form id="recruitmentForm">
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Imię i
-                            Nazwisko</label>
-                        <input type="text"
-                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                <div class="top-action-bar">
+                    <div class="form-group">
+                        <label for="header-email">Email kandydata/rodzica</label>
+                        <input type="email" id="header-email" placeholder="email@example.com">
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Telefon</label>
-                        <input type="tel"
-                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                    <button type="button" class="btn btn-submit-top">WYŚLIJ ZGŁOSZENIE</button>
+                </div>
+            </header>
+
+            <form id="applicationForm">
+
+                <!-- Section 1: Class Profile -->
+                <section class="form-section">
+                    <h3>Wybierz profil klasy</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="class-profile">Pierwszy wybór *</label>
+                            <select id="class-profile" required>
+                                <option value="" disabled selected>Wybierz profil...</option>
+                                <option value="programista">Technik Programista</option>
+                                <option value="robotyk">Technik Robotyk</option>
+                            </select>
+                        </div>
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Obecna Szkoła</label>
-                        <input type="text"
-                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- Section 2: Foreign Language -->
+                <section class="form-section">
+                    <h3>Wybierz drugi język obcy</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="language-choice">Opcje wyboru języka *</label>
+                            <select id="language-choice" required>
+                                <option value="" disabled selected>Wybierz język...</option>
+                                <option value="niemiecki">Język Niemiecki</option>
+                                <option value="hiszpanski">Język Hiszpański</option>
+                            </select>
+                        </div>
                     </div>
-                    <div style="margin-bottom: 15px;">
-                        <label style="display: block; margin-bottom: 5px; font-size: 0.8rem;">Wybór Kierunku</label>
-                        <select
-                            style="width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); color: white; border-radius: 5px; outline: none;">
-                            <option>Technik Programista</option>
-                            <option>Technik Robotyk</option>
-                        </select>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- Section 3: Personal Data -->
+                <section class="form-section">
+                    <h3>Dane osobowe</h3>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="fullname">NAZWISKO IMIĘ pierwsze i drugie (jeśli jest) *</label>
+                            <input type="text" id="fullname" placeholder="np. Kowalski Jan Andrzej" required>
+                        </div>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; font-size: 0.9rem;">Wyślij
-                        Zgłoszenie</button>
-                </form>
-            </div>
-        </section>
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label for="pesel">Pesel *</label>
+                            <input type="text" id="pesel" placeholder="00000000000" maxlength="11" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Data urodzenia *</label>
+                            <input type="date" id="dob" required>
+                        </div>
+                    </div>
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label for="pob">Miejsce urodzenia *</label>
+                            <input type="text" id="pob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="voivodeship">Województwo urodzenia *</label>
+                            <input type="text" id="voivodeship" required>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- Section 4: Registered Address -->
+                <section class="form-section">
+                    <h3>Adres zameldowania</h3>
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label for="city">Miejscowość *</label>
+                            <input type="text" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="zip">Kod pocztowy *</label>
+                            <input type="text" id="zip" placeholder="00-000" required>
+                        </div>
+                    </div>
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label for="post">Poczta *</label>
+                            <input type="text" id="post" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="municipality">Gmina *</label>
+                            <input type="text" id="municipality" required>
+                        </div>
+                    </div>
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label for="county">Powiat *</label>
+                            <input type="text" id="county" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="street">Ulica *</label>
+                            <input type="text" id="street" required>
+                        </div>
+                    </div>
+                    <div class="form-row grid-2">
+                        <div class="form-group">
+                            <label for="house-num">Numer domu/mieszkania *</label>
+                            <input type="text" id="house-num" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nr telefonu kandydata *</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="living-address">Adres zamieszkania *</label>
+                            <select id="living-address" required>
+                                <option value="same">Taki sam jak zameldowania</option>
+                                <option value="other">Inny (proszę podać w uwagach)</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- Section 5: Parents' Basic Data -->
+                <section class="form-section">
+                    <h3>Podstawowe dane rodziców</h3>
+                    <div class="parents-grid">
+                        <!-- Mother's Data -->
+                        <div class="parent-column">
+                            <h4>Dane Matki</h4>
+                            <div class="form-group">
+                                <label for="mother-name">Nazwisko i Imię Matki *</label>
+                                <input type="text" id="mother-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mother-phone">Numer telefonu</label>
+                                <input type="tel" id="mother-phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="mother-email">Adres Email</label>
+                                <input type="email" id="mother-email">
+                            </div>
+                        </div>
+
+                        <!-- Father's Data -->
+                        <div class="parent-column">
+                            <h4>Dane Ojca</h4>
+                            <div class="form-group">
+                                <label for="father-name">Nazwisko i Imię Ojca *</label>
+                                <input type="text" id="father-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="father-phone">Numer telefonu</label>
+                                <input type="tel" id="father-phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="father-email">Adres Email</label>
+                                <input type="email" id="father-email">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- Section 6: Legal and Consents -->
+                <section class="form-section legal-section">
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="gdpr-consent" required>
+                        <label for="gdpr-consent">
+                            Klauzula zgody na wykorzystanie danych osobowych na potrzeby rekrutacji... *
+                        </label>
+                    </div>
+
+                    <div class="info-block gdpr-text">
+                        <h4>KLAUZULA INFORMACYJNA RODO</h4>
+                        <ol>
+                            <li>Administratorem Twoich danych osobowych jest Technikum New Technology...</li>
+                            <li>Twoje dane będą przetwarzane w celu przeprowadzenia procesu rekrutacji...</li>
+                            <li>Podstawą prawną przetwarzania danych jest zgoda kandydata/rodzica...</li>
+                            <li>Dane będą przechowywane przez okres niezbędny do zakończenia rekrutacji...</li>
+                            <li>Odbiorcami danych mogą być podmioty upoważnione na podstawie przepisów prawa...</li>
+                            <li>Masz prawo dostępu do treści swoich danych oraz ich poprawiania...</li>
+                            <li>Podanie danych jest dobrowolne, ale niezbędne do wzięcia udziału w rekrutacji.</li>
+                            <li>W sprawach związanych z danymi kontaktuj się z Inspektorem Ochrony Danych.</li>
+                        </ol>
+                    </div>
+
+                    <div class="info-block documents-list">
+                        <h4>DOKUMENTY NA POTRZEBY REKRUTACJI:</h4>
+                        <ol>
+                            <li>Oryginał świadectwa ukończenia szkoły podstawowej.</li>
+                            <li>Oryginał zaświadczenia o szczegółowych wynikach egzaminu ósmoklasisty.</li>
+                            <li>Dwie fotografie legitymacyjne (podpisane na odwrocie).</li>
+                            <li>Karta zdrowia ucznia (przekazywana ze szkoły podstawowej).</li>
+                            <li>Zaświadczenie lekarskie o braku przeciwwskazań do nauki w zawodzie.</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Footer Section -->
+                <footer class="form-footer">
+                    <div class="recaptcha-placeholder">
+                        <div class="recaptcha-mock">
+                            <input type="checkbox" disabled>
+                            <span>I'm not a robot</span>
+                            <div class="recaptcha-logo">
+                                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit-main">WYŚLIJ ZGŁOSZENIE</button>
+                    <p class="submit-note">Klikając przycisk, potwierdzasz poprawność wprowadzonych danych.</p>
+                </footer>
+
+            </form>
+        </div>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/form.js"></script>
 </body>
 
 </html>
