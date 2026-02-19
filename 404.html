@@ -28,6 +28,8 @@
             position: relative;
             color: var(--text-main);
             margin-bottom: 20px;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .glitch {
@@ -279,6 +281,133 @@
             }
         }
     </style>
+    <style>
+        /* 3D Cube Styles */
+        .scene {
+            width: 100vw;
+            height: 100vh;
+            perspective: 1200px;
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            background: #000;
+            /* Assuming dark theme background */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .scene.active {
+            display: flex;
+        }
+
+        .cube {
+            width: 80vw;
+            height: 80vh;
+            max-width: 600px;
+            max-height: 600px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-300px);
+            /* Push back slightly */
+            transition: transform 0.1s;
+            /* Smooth rotation */
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: visible;
+            /* Show back of faces */
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+            overflow: hidden;
+        }
+
+        /* Ensure content fits */
+        .cube-face .error-container {
+            transform: scale(0.8);
+            /* Scale down content slightly to fit */
+            width: 100%;
+        }
+
+        /* Face transforms */
+        /* Front */
+        .cube-face-front {
+            transform: rotateY(0deg) translateZ(300px);
+        }
+
+        /* Right */
+        .cube-face-right {
+            transform: rotateY(90deg) translateZ(300px);
+        }
+
+        /* Back */
+        .cube-face-back {
+            transform: rotateY(180deg) translateZ(300px);
+        }
+
+        /* Left */
+        .cube-face-left {
+            transform: rotateY(-90deg) translateZ(300px);
+        }
+
+        /* Top */
+        .cube-face-top {
+            transform: rotateX(90deg) translateZ(300px);
+        }
+
+        /* Bottom */
+        .cube-face-bottom {
+            transform: rotateX(-90deg) translateZ(300px);
+        }
+
+        /* Responsive adjustments for cube size */
+        @media (max-width: 600px) {
+            .cube {
+                width: 300px;
+                height: 300px;
+            }
+
+            .cube-face-front {
+                transform: rotateY(0deg) translateZ(150px);
+            }
+
+            .cube-face-right {
+                transform: rotateY(90deg) translateZ(150px);
+            }
+
+            .cube-face-back {
+                transform: rotateY(180deg) translateZ(150px);
+            }
+
+            .cube-face-left {
+                transform: rotateY(-90deg) translateZ(150px);
+            }
+
+            .cube-face-top {
+                transform: rotateX(90deg) translateZ(150px);
+            }
+
+            .cube-face-bottom {
+                transform: rotateX(-90deg) translateZ(150px);
+            }
+
+            .cube-face .error-container {
+                transform: scale(0.5);
+            }
+        }
+    </style>
 </head>
 
 <body class="home">
@@ -310,7 +439,9 @@
             "ajajaj",
             "spooky",
             "bolong",
-            "amazing"
+            "amazing",
+            "bad piggies?",
+            "four o four"
         ];
         const msgSpan = document.querySelector('.msg span');
         if (msgSpan) {
@@ -342,6 +473,165 @@
             // Make it look clickable
             glitchElement.style.cursor = 'pointer';
         }
+
+        // Cube Easter Egg
+        function initCubeEasterEgg() {
+            // Wait for footer to be injected
+            const observer = new MutationObserver((mutations) => {
+                const footerP = document.querySelector('footer p');
+                if (footerP) {
+                    setupCopyrightClick(footerP);
+                    observer.disconnect();
+                }
+            });
+
+            observer.observe(document.body, { childList: true, subtree: true });
+
+            // In case it's already there
+            const footerP = document.querySelector('footer p');
+            if (footerP) setupCopyrightClick(footerP);
+        }
+
+        function setupCopyrightClick(element) {
+            let clicks = 0;
+            element.addEventListener('click', (e) => {
+                // Prevent default selection if user clicks fast
+                if (e.detail > 1) e.preventDefault();
+
+                clicks++;
+                if (clicks === 5) {
+                    activateCubeMode();
+                    clicks = 0;
+                }
+            });
+            // Ensure it doesn't look clickable (no cursor pointer) as requested "no indicators"
+            element.style.cursor = 'text';
+            element.style.userSelect = 'none';
+        }
+
+        function activateCubeMode() {
+            // Check if scene already exists
+            if (document.querySelector('.scene')) return;
+
+            // Hide normal content
+            document.querySelector('main').style.display = 'none';
+            const nav = document.getElementById('nav-placeholder');
+            const footer = document.getElementById('footer-placeholder');
+            if (nav) nav.style.display = 'none';
+            if (footer) footer.style.display = 'none';
+
+            // Create Cube Scene
+            const scene = document.createElement('div');
+            scene.classList.add('scene', 'active');
+
+            const cube = document.createElement('div');
+            cube.classList.add('cube');
+
+            const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+            const content = document.querySelector('.error-container').innerHTML;
+
+            faces.forEach(face => {
+                const faceDiv = document.createElement('div');
+                faceDiv.classList.add('cube-face', `cube-face-${face}`);
+
+                const contentWrapper = document.createElement('div');
+                contentWrapper.classList.add('error-container');
+                contentWrapper.innerHTML = content;
+                // Remove the button from faces to avoid navigation out
+                const btn = contentWrapper.querySelector('.btn');
+                if (btn) btn.remove();
+
+                faceDiv.appendChild(contentWrapper);
+                cube.appendChild(faceDiv);
+            });
+
+            scene.appendChild(cube);
+            document.body.appendChild(scene);
+
+            // Spin Logic
+            let isDragging = false;
+            let startX, startY;
+            let currentX = -30, currentY = 45; // Initial nice angle
+            let rotateY = -30, rotateX = 45;
+            let autoSpinActive = true;
+            let animationId;
+
+            // Auto-spin function
+            function animate() {
+                if (autoSpinActive) {
+                    rotateY += 0.5; // Adjust speed here
+                    cube.style.transform = `translateZ(-300px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    // Update currentX so when user grabs it, it doesn't snap back
+                    currentX = rotateY;
+                    animationId = requestAnimationFrame(animate);
+                }
+            }
+
+            // Start auto-spin
+            animate();
+
+            function stopAutoSpin() {
+                if (autoSpinActive) {
+                    autoSpinActive = false;
+                    cancelAnimationFrame(animationId);
+                }
+            }
+
+            // Mouse Events
+            document.addEventListener('mousedown', (e) => {
+                stopAutoSpin();
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+
+                rotateY = currentX + deltaX * 0.5;
+                rotateX = currentY - deltaY * 0.5;
+
+                cube.style.transform = `translateZ(-300px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                currentX = rotateY;
+                currentY = rotateX;
+            });
+
+            // Touch Events
+            document.addEventListener('touchstart', (e) => {
+                stopAutoSpin();
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const deltaX = e.touches[0].clientX - startX;
+                const deltaY = e.touches[0].clientY - startY;
+
+                rotateY = currentX + deltaX * 0.5;
+                rotateX = currentY - deltaY * 0.5;
+
+                cube.style.transform = `translateZ(-300px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+                currentX = rotateY;
+                currentY = rotateX;
+            });
+
+            // Set initial rotation (handled by animate loop now, but good fallback)
+            // cube.style.transform = `translateZ(-300px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        initCubeEasterEgg();
     </script>
 </body>
 
