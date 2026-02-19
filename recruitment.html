@@ -4,261 +4,1144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Technology - Zgłoszenie</title>
+    <title>Rekrutacja – Technikum New Technology Kraków</title>
+    <meta name="description"
+        content="Formularz rekrutacyjny do Technikum Programistyczno-Robotycznego New Technology w Krakowie na rok szkolny 2025/2026.">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/form.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ========== RECRUITMENT FORM STYLES ========== */
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .form-title h1 {
+            font-size: clamp(1.6rem, 4vw, 2.8rem);
+            letter-spacing: 6px;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .form-title h2 {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        .form-title .year-badge {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 24px;
+            border: 1px solid var(--neon-blue);
+            border-radius: 30px;
+            color: var(--neon-blue);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* Top action bar */
+        .top-action-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 20px 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .top-action-bar label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .top-action-bar input[type="email"] {
+            flex: 1;
+            min-width: 220px;
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .top-action-bar input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .top-action-bar input[type="email"]:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
+        }
+
+        /* Form sections */
+        .form-section {
+            margin-bottom: 48px;
+        }
+
+        .form-section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .form-section-header .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.25);
+            color: var(--neon-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .form-section-header h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        /* Horizontal rule dividers */
+        .form-divider {
+            border: none;
+            border-top: 1px solid var(--glass-border);
+            margin: 48px 0;
+        }
+
+        /* Form fields */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .form-group label .required-star {
+            color: var(--neon-blue);
+            margin-left: 3px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+            color-scheme: dark;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 0 3px rgba(0, 243, 255, 0.1);
+        }
+
+        .submitted .form-group input:invalid,
+        .submitted .form-group select:invalid,
+        .submitted .consent-checkbox input[type="checkbox"]:invalid,
+        input.invalid-field {
+            border-color: #ff4d6a;
+            box-shadow: 0 0 0 3px rgba(255, 77, 106, 0.15);
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2300f3ff' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6.5 6.5 6.5-6.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .form-group select option {
+            background: #111;
+            color: var(--text-main);
+        }
+
+        /* Grid layouts for form fields */
+        .form-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Parents two-column layout */
+        .parents-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .parent-card {
+            padding: 28px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .parent-card h4 {
+            font-size: 1rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+
+        /* Checkbox / consent styles */
+        .consent-block {
+            margin-bottom: 30px;
+        }
+
+        .consent-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-card);
+            transition: border-color 0.3s ease;
+        }
+
+        .consent-checkbox:hover {
+            border-color: rgba(0, 243, 255, 0.3);
+        }
+
+        .consent-checkbox input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            min-width: 22px;
+            border: 2px solid var(--glass-border);
+            border-radius: 6px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2px;
+        }
+
+        .consent-checkbox input[type="checkbox"]:checked {
+            background: var(--neon-blue);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+        }
+
+        .consent-checkbox input[type="checkbox"]:checked::after {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 14px;
+            font-weight: 700;
+            width: 100%;
+            height: 100%;
+        }
+
+        .consent-checkbox .consent-text {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .consent-checkbox .consent-text strong {
+            color: var(--text-main);
+        }
+
+        /* Legal text block */
+        .legal-block {
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            margin-bottom: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .legal-block h4 {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .legal-block p,
+        .legal-block li {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .legal-block ol {
+            padding-left: 20px;
+        }
+
+        .legal-block ol li {
+            padding-left: 6px;
+        }
+
+        /* Documents list */
+        .documents-block {
+            padding: 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+        }
+
+        .documents-block h4 {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+        }
+
+        .documents-block ol {
+            padding-left: 20px;
+        }
+
+        .documents-block ol li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            padding-left: 6px;
+        }
+
+        /* Footer submit area */
+        .form-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .btn-submit-large {
+            display: inline-block;
+            padding: 18px 60px;
+            background: transparent;
+            border: 2px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-submit-large:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-blue-glow), 0 0 60px rgba(0, 243, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-submit-large:active {
+            transform: translateY(0);
+        }
+
+        /* reCAPTCHA mock */
+        .recaptcha-mock {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 24px;
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            user-select: none;
+        }
+
+        .recaptcha-mock .recaptcha-checkbox {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--glass-border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .recaptcha-mock .recaptcha-checkbox.checked {
+            background: var(--neon-blue);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
+        }
+
+        .recaptcha-mock .recaptcha-checkbox.checked::after {
+            content: '✓';
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .recaptcha-mock .recaptcha-brand {
+            margin-left: auto;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.2);
+            text-align: right;
+            line-height: 1.3;
+        }
+
+        /* Success animation */
+        .form-success-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            animation: fadeInOverlay 0.5s ease;
+        }
+
+        .form-success-overlay.active {
+            display: flex;
+        }
+
+        .form-success-overlay .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            animation: popIn 0.6s ease 0.2s both;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .form-success-overlay h2 {
+            color: var(--neon-blue);
+            animation: popIn 0.6s ease 0.4s both;
+        }
+
+        .form-success-overlay p {
+            color: var(--text-muted);
+            animation: popIn 0.6s ease 0.6s both;
+        }
+
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .top-action-bar {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 16px;
+            }
+
+            .top-action-bar input[type="email"] {
+                min-width: unset;
+            }
+
+            .form-grid-2,
+            .form-grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .parents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .parent-card {
+                padding: 20px;
+            }
+
+            .form-section-header h3 {
+                font-size: 1rem;
+            }
+
+            .btn-submit-large {
+                padding: 16px 40px;
+                font-size: 0.95rem;
+                letter-spacing: 2px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .legal-block {
+                max-height: 300px;
+                padding: 20px;
+            }
+
+            .consent-checkbox {
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-title h1 {
+                letter-spacing: 3px;
+            }
+
+            .form-section-header .section-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .form-group input,
+            .form-group select {
+                padding: 12px 14px;
+                font-size: 0.9rem;
+            }
+
+            .recaptcha-mock {
+                flex-wrap: wrap;
+                padding: 14px 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
     <div id="nav-placeholder"></div>
 
-    <div class="blob-mini" style="top: 10%; left: 10%;"></div>
-    <div class="blob-mini" style="bottom: 10%; right: 10%; animation-delay: -4s;"></div>
-
-    <main class="form-page">
-        <div class="glass-card form-container">
-
-            <!-- Header Section -->
-            <header class="form-header">
-                <h1>P O D A N I E</h1>
-                <h2>Technikum Programistyczno-Robotyczne New Technology Kraków na rok szkolny 2025/2026</h2>
-
-                <div class="top-action-bar">
-                    <div class="form-group">
-                        <label for="header-email">Email kandydata/rodzica</label>
-                        <input type="email" id="header-email" placeholder="email@example.com">
-                    </div>
-                    <button type="button" class="btn btn-submit-top">WYŚLIJ ZGŁOSZENIE</button>
-                </div>
-            </header>
-
-            <form id="applicationForm">
-
-                <!-- Section 1: Class Profile -->
-                <section class="form-section">
-                    <h3>Wybierz profil klasy</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="class-profile">Pierwszy wybór *</label>
-                            <select id="class-profile" required>
-                                <option value="" disabled selected>Wybierz profil...</option>
-                                <option value="programista">Technik Programista</option>
-                                <option value="robotyk">Technik Robotyk</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
-
-                <hr class="section-divider">
-
-                <!-- Section 2: Foreign Language -->
-                <section class="form-section">
-                    <h3>Wybierz drugi język obcy</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="language-choice">Opcje wyboru języka *</label>
-                            <select id="language-choice" required>
-                                <option value="" disabled selected>Wybierz język...</option>
-                                <option value="niemiecki">Język Niemiecki</option>
-                                <option value="hiszpanski">Język Hiszpański</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
-
-                <hr class="section-divider">
-
-                <!-- Section 3: Personal Data -->
-                <section class="form-section">
-                    <h3>Dane osobowe</h3>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="fullname">NAZWISKO IMIĘ pierwsze i drugie (jeśli jest) *</label>
-                            <input type="text" id="fullname" placeholder="np. Kowalski Jan Andrzej" required>
-                        </div>
-                    </div>
-                    <div class="form-row grid-2">
-                        <div class="form-group">
-                            <label for="pesel">Pesel *</label>
-                            <input type="text" id="pesel" placeholder="00000000000" maxlength="11" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="dob">Data urodzenia *</label>
-                            <input type="date" id="dob" required>
-                        </div>
-                    </div>
-                    <div class="form-row grid-2">
-                        <div class="form-group">
-                            <label for="pob">Miejsce urodzenia *</label>
-                            <input type="text" id="pob" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="voivodeship">Województwo urodzenia *</label>
-                            <input type="text" id="voivodeship" required>
-                        </div>
-                    </div>
-                </section>
-
-                <hr class="section-divider">
-
-                <!-- Section 4: Registered Address -->
-                <section class="form-section">
-                    <h3>Adres zameldowania</h3>
-                    <div class="form-row grid-2">
-                        <div class="form-group">
-                            <label for="city">Miejscowość *</label>
-                            <input type="text" id="city" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="zip">Kod pocztowy *</label>
-                            <input type="text" id="zip" placeholder="00-000" required>
-                        </div>
-                    </div>
-                    <div class="form-row grid-2">
-                        <div class="form-group">
-                            <label for="post">Poczta *</label>
-                            <input type="text" id="post" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="municipality">Gmina *</label>
-                            <input type="text" id="municipality" required>
-                        </div>
-                    </div>
-                    <div class="form-row grid-2">
-                        <div class="form-group">
-                            <label for="county">Powiat *</label>
-                            <input type="text" id="county" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="street">Ulica *</label>
-                            <input type="text" id="street" required>
-                        </div>
-                    </div>
-                    <div class="form-row grid-2">
-                        <div class="form-group">
-                            <label for="house-num">Numer domu/mieszkania *</label>
-                            <input type="text" id="house-num" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Nr telefonu kandydata *</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group full-width">
-                            <label for="living-address">Adres zamieszkania *</label>
-                            <select id="living-address" required>
-                                <option value="same">Taki sam jak zameldowania</option>
-                                <option value="other">Inny (proszę podać w uwagach)</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
-
-                <hr class="section-divider">
-
-                <!-- Section 5: Parents' Basic Data -->
-                <section class="form-section">
-                    <h3>Podstawowe dane rodziców</h3>
-                    <div class="parents-grid">
-                        <!-- Mother's Data -->
-                        <div class="parent-column">
-                            <h4>Dane Matki</h4>
-                            <div class="form-group">
-                                <label for="mother-name">Nazwisko i Imię Matki *</label>
-                                <input type="text" id="mother-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="mother-phone">Numer telefonu</label>
-                                <input type="tel" id="mother-phone">
-                            </div>
-                            <div class="form-group">
-                                <label for="mother-email">Adres Email</label>
-                                <input type="email" id="mother-email">
-                            </div>
-                        </div>
-
-                        <!-- Father's Data -->
-                        <div class="parent-column">
-                            <h4>Dane Ojca</h4>
-                            <div class="form-group">
-                                <label for="father-name">Nazwisko i Imię Ojca *</label>
-                                <input type="text" id="father-name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="father-phone">Numer telefonu</label>
-                                <input type="tel" id="father-phone">
-                            </div>
-                            <div class="form-group">
-                                <label for="father-email">Adres Email</label>
-                                <input type="email" id="father-email">
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <hr class="section-divider">
-
-                <!-- Section 6: Legal and Consents -->
-                <section class="form-section legal-section">
-                    <div class="form-group checkbox-group">
-                        <input type="checkbox" id="gdpr-consent" required>
-                        <label for="gdpr-consent">
-                            Klauzula zgody na wykorzystanie danych osobowych na potrzeby rekrutacji... *
-                        </label>
-                    </div>
-
-                    <div class="info-block gdpr-text">
-                        <h4>KLAUZULA INFORMACYJNA RODO</h4>
-                        <ol>
-                            <li>Administratorem Twoich danych osobowych jest Technikum New Technology...</li>
-                            <li>Twoje dane będą przetwarzane w celu przeprowadzenia procesu rekrutacji...</li>
-                            <li>Podstawą prawną przetwarzania danych jest zgoda kandydata/rodzica...</li>
-                            <li>Dane będą przechowywane przez okres niezbędny do zakończenia rekrutacji...</li>
-                            <li>Odbiorcami danych mogą być podmioty upoważnione na podstawie przepisów prawa...</li>
-                            <li>Masz prawo dostępu do treści swoich danych oraz ich poprawiania...</li>
-                            <li>Podanie danych jest dobrowolne, ale niezbędne do wzięcia udziału w rekrutacji.</li>
-                            <li>W sprawach związanych z danymi kontaktuj się z Inspektorem Ochrony Danych.</li>
-                        </ol>
-                    </div>
-
-                    <div class="info-block documents-list">
-                        <h4>DOKUMENTY NA POTRZEBY REKRUTACJI:</h4>
-                        <ol>
-                            <li>Oryginał świadectwa ukończenia szkoły podstawowej.</li>
-                            <li>Oryginał zaświadczenia o szczegółowych wynikach egzaminu ósmoklasisty.</li>
-                            <li>Dwie fotografie legitymacyjne (podpisane na odwrocie).</li>
-                            <li>Karta zdrowia ucznia (przekazywana ze szkoły podstawowej).</li>
-                            <li>Zaświadczenie lekarskie o braku przeciwwskazań do nauki w zawodzie.</li>
-                        </ol>
-                    </div>
-                </section>
-
-                <!-- Footer Section -->
-                <footer class="form-footer">
-                    <div class="recaptcha-placeholder">
-                        <div class="recaptcha-mock">
-                            <input type="checkbox" disabled>
-                            <span>I'm not a robot</span>
-                            <div class="recaptcha-logo">
-                                <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA">
-                            </div>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-submit-main">WYŚLIJ ZGŁOSZENIE</button>
-                    <p class="submit-note">Klikając przycisk, potwierdzasz poprawność wprowadzonych danych.</p>
-                </footer>
-
-            </form>
+    <main>
+        <!-- ============ HEADER / TITLE ============ -->
+        <div class="form-title">
+            <h1>PODANIE</h1>
+            <h2>Technikum Programistyczno-Robotyczne<br>New Technology Kraków</h2>
+            <span class="year-badge">Rok szkolny 2025 / 2026</span>
         </div>
+
+        <!-- Top Action Bar: Email + Submit -->
+        <div class="top-action-bar" id="top-action-bar">
+            <label for="top-email">Email</label>
+            <input type="email" id="top-email" name="top-email" placeholder="twoj.email@example.com" required>
+        </div>
+
+        <!-- ============ FORM ============ -->
+        <form id="recruitment-form" novalidate>
+
+            <!-- ====== SECTION 1: Profil klasy ====== -->
+            <section class="form-section" id="section-profile">
+                <div class="form-section-header">
+                    <span class="section-number">1</span>
+                    <h3>Wybierz profil klasy</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="first-choice">Pierwszy wybór <span class="required-star">*</span></label>
+                    <select id="first-choice" name="first-choice" required>
+                        <option value="" disabled selected>— Wybierz profil —</option>
+                        <option value="programista">Technik Programista</option>
+                        <option value="robotyk">Technik Robotyk</option>
+                    </select>
+                </div>
+            </section>
+
+            <hr class="form-divider">
+
+            <!-- ====== SECTION 2: Język obcy ====== -->
+            <section class="form-section" id="section-language">
+                <div class="form-section-header">
+                    <span class="section-number">2</span>
+                    <h3>Wybierz drugi język obcy</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="language-choice">Opcje wyboru języka <span class="required-star">*</span></label>
+                    <select id="language-choice" name="language-choice" required>
+                        <option value="" disabled selected>— Wybierz język —</option>
+                        <option value="niemiecki">Język niemiecki</option>
+                        <option value="hiszpanski">Język hiszpański</option>
+                    </select>
+                </div>
+            </section>
+
+            <hr class="form-divider">
+
+            <!-- ====== SECTION 3: Dane osobowe ====== -->
+            <section class="form-section" id="section-personal">
+                <div class="form-section-header">
+                    <span class="section-number">3</span>
+                    <h3>Dane osobowe</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="full-name">Nazwisko imię pierwsze i drugie (jeśli jest) <span
+                            class="required-star">*</span></label>
+                    <input type="text" id="full-name" name="full-name" placeholder="np. Kowalski Jan Andrzej" required>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="pesel">PESEL <span class="required-star">*</span></label>
+                        <input type="text" id="pesel" name="pesel" placeholder="00000000000" pattern="\d{11}"
+                            maxlength="11" inputmode="numeric" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob">Data urodzenia <span class="required-star">*</span></label>
+                        <input type="date" id="dob" name="dob" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label for="birthplace">Miejsce urodzenia <span class="required-star">*</span></label>
+                        <input type="text" id="birthplace" name="birthplace" placeholder="np. Kraków" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birth-voivodeship">Województwo urodzenia <span
+                                class="required-star">*</span></label>
+                        <input type="text" id="birth-voivodeship" name="birth-voivodeship" placeholder="np. małopolskie"
+                            required>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="form-divider">
+
+            <!-- ====== SECTION 4: Adres zameldowania ====== -->
+            <section class="form-section" id="section-address">
+                <div class="form-section-header">
+                    <span class="section-number">4</span>
+                    <h3>Adres zameldowania</h3>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label for="city">Miejscowość <span class="required-star">*</span></label>
+                        <input type="text" id="city" name="city" placeholder="np. Kraków" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zip-code">Kod pocztowy <span class="required-star">*</span></label>
+                        <input type="text" id="zip-code" name="zip-code" placeholder="00-000" pattern="\d{2}-\d{3}"
+                            maxlength="6" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="post-office">Poczta <span class="required-star">*</span></label>
+                        <input type="text" id="post-office" name="post-office" placeholder="np. Kraków" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label for="gmina">Gmina <span class="required-star">*</span></label>
+                        <input type="text" id="gmina" name="gmina" placeholder="np. Kraków" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="powiat">Powiat <span class="required-star">*</span></label>
+                        <input type="text" id="powiat" name="powiat" placeholder="np. krakowski" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="street">Ulica <span class="required-star">*</span></label>
+                        <input type="text" id="street" name="street" placeholder="np. ul. Szkolna" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-3">
+                    <div class="form-group">
+                        <label for="house-number">Numer domu/mieszkania <span class="required-star">*</span></label>
+                        <input type="text" id="house-number" name="house-number" placeholder="np. 12/4" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="candidate-phone">Nr telefonu kandydata <span class="required-star">*</span></label>
+                        <input type="tel" id="candidate-phone" name="candidate-phone" placeholder="+48 000 000 000"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="living-address">Adres zamieszkania <span class="required-star">*</span></label>
+                        <select id="living-address" name="living-address" required>
+                            <option value="" disabled selected>— Wybierz —</option>
+                            <option value="same">Taki sam jak adres zameldowania</option>
+                            <option value="different">Inny niż adres zameldowania</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="form-divider">
+
+            <!-- ====== SECTION 5: Dane rodziców ====== -->
+            <section class="form-section" id="section-parents">
+                <div class="form-section-header">
+                    <span class="section-number">5</span>
+                    <h3>Podstawowe dane rodziców</h3>
+                </div>
+
+                <div class="parents-grid">
+                    <!-- Mother -->
+                    <div class="parent-card">
+                        <h4>Dane Matki</h4>
+
+                        <div class="form-group">
+                            <label for="mother-name">Nazwisko i Imię Matki <span class="required-star">*</span></label>
+                            <input type="text" id="mother-name" name="mother-name" placeholder="np. Kowalska Anna"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mother-phone">Numer telefonu</label>
+                            <input type="tel" id="mother-phone" name="mother-phone" placeholder="+48 000 000 000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mother-email">Adres Email</label>
+                            <input type="email" id="mother-email" name="mother-email" placeholder="email@example.com">
+                        </div>
+                    </div>
+
+                    <!-- Father -->
+                    <div class="parent-card">
+                        <h4>Dane Ojca</h4>
+
+                        <div class="form-group">
+                            <label for="father-name">Nazwisko i Imię Ojca <span class="required-star">*</span></label>
+                            <input type="text" id="father-name" name="father-name" placeholder="np. Kowalski Jan"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="father-phone">Numer telefonu</label>
+                            <input type="tel" id="father-phone" name="father-phone" placeholder="+48 000 000 000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="father-email">Adres Email</label>
+                            <input type="email" id="father-email" name="father-email" placeholder="email@example.com">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="form-divider">
+
+            <!-- ====== SECTION 6: Zgody i klauzule ====== -->
+            <section class="form-section" id="section-legal">
+                <div class="form-section-header">
+                    <span class="section-number">6</span>
+                    <h3>Zgody i klauzule prawne</h3>
+                </div>
+
+                <!-- GDPR Consent Checkbox -->
+                <div class="consent-block">
+                    <label class="consent-checkbox">
+                        <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required>
+                        <span class="consent-text">
+                            <strong>Klauzula zgody na wykorzystanie danych osobowych na potrzeby
+                                rekrutacji.</strong><br>
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych oraz danych osobowych mojego dziecka
+                            zawartych w niniejszym formularzu rekrutacyjnym przez Technikum Programistyczno-Robotyczne
+                            New Technology w Krakowie w celu przeprowadzenia procesu rekrutacji na rok szkolny
+                            2025/2026,
+                            zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia
+                            2016 r.
+                            (RODO). Przyjmuję do wiadomości, że przysługuje mi prawo dostępu do treści moich danych
+                            oraz ich poprawiania. Podanie danych jest dobrowolne, lecz niezbędne do przeprowadzenia
+                            procesu rekrutacji.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- GDPR Information Clause -->
+                <div class="legal-block">
+                    <h4>Klauzula informacyjna RODO</h4>
+                    <ol>
+                        <li>
+                            Administratorem danych osobowych jest Technikum Programistyczno-Robotyczne New Technology
+                            z siedzibą w Krakowie. Administrator dba o bezpieczeństwo danych osobowych udostępnionych
+                            przez Państwa i zapewnia, że dane te są przetwarzane zgodnie z obowiązującymi przepisami
+                            prawa.
+                        </li>
+                        <li>
+                            Dane osobowe przetwarzane są na podstawie art. 6 ust. 1 lit. a) oraz lit. c) Rozporządzenia
+                            Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony
+                            osób fizycznych w związku z przetwarzaniem danych osobowych (RODO) w celu przeprowadzenia
+                            procesu rekrutacji do szkoły.
+                        </li>
+                        <li>
+                            Odbiorcami danych osobowych mogą być podmioty uprawnione do ich otrzymania na mocy przepisów
+                            prawa, a także podmioty przetwarzające dane osobowe na zlecenie Administratora w związku
+                            z realizacją usług na rzecz Administratora (np. dostawcy systemów informatycznych).
+                        </li>
+                        <li>
+                            Dane osobowe będą przechowywane przez okres niezbędny do realizacji celów, dla których
+                            zostały
+                            zebrane, w tym przez okres wymagany przepisami prawa dotyczącymi archiwizacji dokumentacji
+                            szkolnej, nie dłużej jednak niż przez okres 5 lat od zakończenia procesu rekrutacji.
+                        </li>
+                        <li>
+                            Osobie, której dane dotyczą, przysługuje prawo dostępu do treści swoich danych osobowych,
+                            prawo do ich sprostowania, usunięcia, ograniczenia przetwarzania, prawo do przenoszenia
+                            danych oraz prawo do cofnięcia zgody w dowolnym momencie bez wpływu na zgodność
+                            z prawem przetwarzania dokonanego przed jej cofnięciem.
+                        </li>
+                        <li>
+                            W przypadku stwierdzenia naruszenia przepisów dotyczących ochrony danych osobowych, osobie
+                            której dane dotyczą przysługuje prawo wniesienia skargi do Prezesa Urzędu Ochrony Danych
+                            Osobowych (PUODO), ul. Stawki 2, 00-193 Warszawa.
+                        </li>
+                        <li>
+                            Podanie danych osobowych jest dobrowolne, jednakże niezbędne do wzięcia udziału w procesie
+                            rekrutacji. Niepodanie wymaganych danych osobowych skutkować będzie brakiem możliwości
+                            rozpatrzenia podania o przyjęcie do szkoły.
+                        </li>
+                        <li>
+                            Dane osobowe nie będą podlegały zautomatyzowanemu podejmowaniu decyzji, w tym profilowaniu,
+                            o którym mowa w art. 22 ust. 1 i 4 RODO. Dane nie będą przekazywane do państw trzecich
+                            ani organizacji międzynarodowych.
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- Documents required -->
+                <div class="documents-block">
+                    <h4>Dokumenty na potrzeby rekrutacji:</h4>
+                    <ol>
+                        <li>Świadectwo ukończenia szkoły podstawowej (oryginał lub kopia poświadczona notarialnie).</li>
+                        <li>Zaświadczenie o wynikach egzaminu ósmoklasisty (oryginał lub kopia poświadczona
+                            notarialnie).</li>
+                        <li>Dwa zdjęcia legitymacyjne (podpisane na odwrocie imieniem i nazwiskiem kandydata).</li>
+                        <li>Karta zdrowia ucznia oraz zaświadczenie lekarskie o braku przeciwwskazań zdrowotnych do
+                            kształcenia w wybranym zawodzie.</li>
+                        <li>Orzeczenie lub opinia poradni psychologiczno-pedagogicznej (jeśli dotyczy).</li>
+                    </ol>
+                </div>
+            </section>
+
+            <hr class="form-divider">
+
+            <!-- ============ FOOTER: Submit + reCAPTCHA ============ -->
+            <div class="form-footer">
+                <!-- reCAPTCHA mock -->
+                <div class="recaptcha-mock" id="recaptcha-widget">
+                    <div class="recaptcha-checkbox" id="recaptcha-checkbox" role="checkbox" aria-checked="false"
+                        tabindex="0"></div>
+                    <span>Nie jestem robotem</span>
+                    <span class="recaptcha-brand">reCAPTCHA<br>Privacy – Terms</span>
+                </div>
+
+                <button type="submit" class="btn-submit-large" id="final-submit-btn">Wyślij zgłoszenie</button>
+            </div>
+        </form>
     </main>
 
     <div id="footer-placeholder"></div>
+
+    <!-- Success overlay -->
+    <div class="form-success-overlay" id="success-overlay">
+        <div class="success-icon">✓</div>
+        <h2>Zgłoszenie wysłane!</h2>
+        <p>Dziękujemy za złożenie podania. Skontaktujemy się z Tobą wkrótce.</p>
+    </div>
+
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/form.js"></script>
+    <script>
+        (function () {
+            'use strict';
+
+            // ===== reCAPTCHA mock toggle =====
+            const recaptchaBox = document.getElementById('recaptcha-checkbox');
+            let captchaVerified = false;
+
+            if (recaptchaBox) {
+                recaptchaBox.addEventListener('click', function () {
+                    captchaVerified = !captchaVerified;
+                    this.classList.toggle('checked', captchaVerified);
+                    this.setAttribute('aria-checked', captchaVerified);
+                });
+
+                recaptchaBox.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            }
+
+            // ===== Form validation & submit =====
+            const form = document.getElementById('recruitment-form');
+            const successOverlay = document.getElementById('success-overlay');
+
+            function validateAndSubmit(e) {
+                if (e) e.preventDefault();
+
+                // Mark form as submitted so CSS shows red borders
+                form.classList.add('submitted');
+
+                // Check top email (outside form, must validate manually)
+                const topEmail = document.getElementById('top-email');
+                if (topEmail && (!topEmail.value || !topEmail.validity.valid)) {
+                    topEmail.classList.add('invalid-field');
+                    topEmail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(function () {
+                        topEmail.focus();
+                    }, 500);
+                    return;
+                } else if (topEmail) {
+                    topEmail.classList.remove('invalid-field');
+                }
+
+                // Find the first invalid field and scroll to it
+                const firstInvalid = form.querySelector('input:invalid, select:invalid');
+                if (firstInvalid) {
+                    firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(function () {
+                        firstInvalid.focus();
+                        form.reportValidity();
+                    }, 500);
+                    return;
+                }
+
+                // Check GDPR consent
+                const gdpr = document.getElementById('gdpr-consent');
+                if (!gdpr.checked) {
+                    gdpr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(function () {
+                        gdpr.focus();
+                        alert('Wymagane jest zaakceptowanie klauzuli zgody na przetwarzanie danych osobowych.');
+                    }, 500);
+                    return;
+                }
+
+                // Check at least one parent has both phone and email
+                const motherPhone = document.getElementById('mother-phone');
+                const motherEmail = document.getElementById('mother-email');
+                const fatherPhone = document.getElementById('father-phone');
+                const fatherEmail = document.getElementById('father-email');
+
+                const motherComplete = motherPhone.value.trim() && motherEmail.value.trim();
+                const fatherComplete = fatherPhone.value.trim() && fatherEmail.value.trim();
+
+                if (!motherComplete && !fatherComplete) {
+                    // Highlight empty parent fields
+                    [motherPhone, motherEmail, fatherPhone, fatherEmail].forEach(function (el) {
+                        if (!el.value.trim()) {
+                            el.classList.add('invalid-field');
+                        } else {
+                            el.classList.remove('invalid-field');
+                        }
+                    });
+                    const scrollTarget = motherPhone.value.trim() ? fatherPhone : motherPhone;
+                    scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(function () {
+                        scrollTarget.focus();
+                        alert('Numer telefonu oraz adres email przynajmniej jednego rodzica jest wymagany.');
+                    }, 500);
+                    return;
+                } else {
+                    [motherPhone, motherEmail, fatherPhone, fatherEmail].forEach(function (el) {
+                        el.classList.remove('invalid-field');
+                    });
+                }
+
+                // Check reCAPTCHA
+                if (!captchaVerified) {
+                    recaptchaBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(function () {
+                        alert('Proszę potwierdzić, że nie jesteś robotem.');
+                        recaptchaBox.focus();
+                    }, 500);
+                    return;
+                }
+
+                // Show success overlay then redirect
+                if (successOverlay) {
+                    successOverlay.classList.add('active');
+                    setTimeout(function () {
+                        window.location.href = 'index.html';
+                    }, 2500);
+                }
+            }
+
+            if (form) {
+                form.addEventListener('submit', validateAndSubmit);
+            }
+
+            // ===== Clear red highlight on input =====
+            if (form) {
+                form.querySelectorAll('input, select').forEach(function (el) {
+                    el.addEventListener('input', function () {
+                        this.classList.remove('invalid-field');
+                    });
+                    el.addEventListener('change', function () {
+                        this.classList.remove('invalid-field');
+                    });
+                });
+            }
+            // Top email field (outside form)
+            var topEmailField = document.getElementById('top-email');
+            if (topEmailField) {
+                topEmailField.addEventListener('input', function () {
+                    this.classList.remove('invalid-field');
+                });
+            }
+
+            // ===== PESEL auto-fill date of birth =====
+            const peselInput = document.getElementById('pesel');
+            const dobInput = document.getElementById('dob');
+
+            // Force date picker to open on click anywhere in the field
+            if (dobInput) {
+                dobInput.addEventListener('click', function () {
+                    try { this.showPicker(); } catch (e) { /* fallback for older browsers */ }
+                });
+            }
+
+            if (peselInput && dobInput) {
+                peselInput.addEventListener('input', function () {
+                    const val = this.value.replace(/\D/g, '');
+                    if (val.length === 11) {
+                        let year = parseInt(val.substring(0, 2), 10);
+                        let month = parseInt(val.substring(2, 4), 10);
+                        const day = parseInt(val.substring(4, 6), 10);
+
+                        // Determine century from month encoding
+                        if (month > 80) {
+                            year += 1800;
+                            month -= 80;
+                        } else if (month > 60) {
+                            year += 2200;
+                            month -= 60;
+                        } else if (month > 40) {
+                            year += 2100;
+                            month -= 40;
+                        } else if (month > 20) {
+                            year += 2000;
+                            month -= 20;
+                        } else {
+                            year += 1900;
+                        }
+
+                        const m = String(month).padStart(2, '0');
+                        const d = String(day).padStart(2, '0');
+                        dobInput.value = year + '-' + m + '-' + d;
+                    }
+                });
+            }
+
+            // ===== Allow only digits in PESEL =====
+            if (peselInput) {
+                peselInput.addEventListener('input', function () {
+                    this.value = this.value.replace(/\D/g, '').substring(0, 11);
+                });
+            }
+
+            // ===== Zip code formatting (XX-XXX) =====
+            const zipInput = document.getElementById('zip-code');
+            if (zipInput) {
+                zipInput.addEventListener('input', function () {
+                    let v = this.value.replace(/\D/g, '').substring(0, 5);
+                    if (v.length > 2) {
+                        v = v.substring(0, 2) + '-' + v.substring(2);
+                    }
+                    this.value = v;
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>
